@@ -385,11 +385,16 @@ $endif$
 
 $endif$
 
-<div id="container">
-<div class="inner">
-<header>
+<div class="entry-header">
+  <div class="entry-image">
+  </div><!-- /.entry-image -->
+</div><!-- /.entry-header -->
+<div id="main" role="main">
+<article class="hentry">
+<header class="header-title">
+<div class="header-title-wrap">
 $if(title)$
-<h1 class="title toc-ignore">$title$</h1>
+<h1 class="title toc-ignore entry-title">$title$</h1>
 $if(subtitle)$
 <h2 class="subtitle">$subtitle$</h2>
 $endif$
@@ -417,14 +422,14 @@ $abstract$
 </div>
 $endif$
 $endif$
+</div><!-- /.header-title-wrap -->
 </header>
-
-<hr>
 
 $if(theme)$
 </div>
 $endif$
 
+<div class="entry-content">
 $if(toc_float)$
 $else$
 $if(toc)$
@@ -435,8 +440,9 @@ $endif$
 $endif$
 
 $body$
-</div>
-</div>
+</div><!-- /.entry-content -->
+</article>
+</div><!-- /#main -->
 
 $for(include-after)$
 $include-after$

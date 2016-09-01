@@ -73,16 +73,36 @@ You can also create documents from **prettydoc** templates in RStudio.
 
 ### Options and Themes
 
-The options for the `html_pretty` engine are fully compatible with the default
+The options for the `html_pretty` engine are mostly compatible with the default
 `html_document`
 (see the [documentation](http://rmarkdown.rstudio.com/html_document_format.html))
-with two exceptions:
+with a few exceptions:
 
-1. The `theme` option can take value from `cayman`, `tactile` and
-`architect`. More themes will be added in the future. The themes contained in
-**prettydoc** are much inspired by and modified from
-various [Github page themes](https://github.com/blog/1081-instantly-beautiful-project-pages).
-2. The `highlight` options takes value from `github` and `vignette`.
+1. Currently the `theme` option can take the following values. More themes will
+be added in the future.
+    - `cayman`: Modified from the [Cayman](https://github.com/jasonlong/cayman-theme) theme.
+    - `tactile`: Modified from the [Tactile](https://github.com/jasonlong/tactile-theme) theme.
+    - `architect`: Modified from the [Architect](https://github.com/jasonlong/architect-theme) theme.
+    - `leonids`: Modified from the [Leonids](https://github.com/renyuanz/leonids) theme.
+    - `hpstr`: Modified from the [HPSTR](https://github.com/mmistakes/hpstr-jekyll-theme) theme.
+2. The `highlight` option takes value from `github` and `vignette`.
+3. Options `code_folding`, `code_download` and `toc_float` are not applicable.
+
+### Related Projects
+
+- [tufte](https://github.com/rstudio/tufte) provides the Tufte style for
+R Markdown documents.
+- [BiocStyle](http://bioconductor.org/packages/release/bioc/html/BiocStyle.html)
+provides standard formatting styles for Bioconductor PDF and HTML documents.
+- [rmdformats](https://github.com/juba/rmdformats) by Julien Barnier contains
+HTML formats and templates for R Markdown documents, with some extra features
+such as automatic table of contents, lightboxed figures, and dynamic crosstab
+helper.
+- [markdowntemplates](https://github.com/hrbrmstr/markdowntemplates) by Bob Rudis
+is a collection of alternative R Markdown templates.
+- [prettyjekyll](https://github.com/privefl/prettyjekyll) by Florian Privé
+uses **prettydoc** to convert R Markdown documents to Jekyll Markdown for blog posting.
+
 
 ### Gallery
 
@@ -105,4 +125,16 @@ different themes and syntax highlighters.
 
 <div align="center">
   <img width="600px" src="http://yixuan.cos.name/prettydoc/images/architect.png" alt="Architect Theme" />
+</div>
+
+#### Leonids [(demo page)](http://yixuan.cos.name/prettydoc/leonids.html)
+
+<div align="center">
+  <img width="800px" src="http://yixuan.cos.name/prettydoc/images/leonids.png" alt="Leonids Theme" />
+</div>
+
+#### HPSTR [(demo page)](http://yixuan.cos.name/prettydoc/hpstr.html)
+
+<div align="center">
+  <img width="600px" src="http://yixuan.cos.name/prettydoc/images/hpstr.png" alt="HPSTR Theme" />
 </div>

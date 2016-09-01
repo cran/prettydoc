@@ -5,11 +5,13 @@
 \title{Creating Pretty HTML from R Markdown}
 \usage{
 html_pretty(theme = "cayman", highlight = NULL, css = NULL,
-  fig_retina = NULL, keep_md = FALSE, readme = FALSE, ...)
+  fig_retina = NULL, keep_md = FALSE, readme = FALSE,
+  compressed_css = TRUE, ...)
 }
 \arguments{
 \item{theme}{Character string to specify the document theme. Currently supported
-themes are \code{"cayman"}, \code{"tactile"} and \code{"architect"}.}
+themes are \code{"cayman"}, \code{"tactile"}, \code{"architect"},
+\code{leonids} and \code{hpstr}.}
 
 \item{highlight}{Character string to specify the syntax highlight theme.
 Supported values are \code{NULL} (use Pandoc default),
@@ -27,6 +29,8 @@ This is the same argument in \code{\link[rmarkdown]{html_vignette}}.}
 
 \item{readme}{Use this vignette as the package \file{README.md} file.
 This is the same argument in \code{\link[rmarkdown]{html_vignette}}.}
+
+\item{compressed_css}{Whether the compressed CSS should be used.}
 
 \item{\dots}{Additional arguments passed to \code{\link[rmarkdown]{html_document}}.}
 }
