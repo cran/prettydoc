@@ -4,17 +4,20 @@
 #' and \code{\link[rmarkdown]{html_vignette}} formats to create HTML document
 #' from R Markdown. It generates small yet pretty HTML pages that are suitable
 #' for publishing project pages and package vignettes.
-#' See the \href{http://yixuan.cos.name/prettydoc/}{online documentation}
+#' See the \href{https://prettydoc.statr.me/}{online documentation}
 #' for more details.
 #'
 #' @param theme Character string to specify the document theme. Currently supported
 #'              themes are \code{"cayman"}, \code{"tactile"}, \code{"architect"},
-#'              \code{leonids} and \code{hpstr}.
+#'              \code{"leonids"}, and \code{"hpstr"}.
 #' @param highlight Character string to specify the syntax highlight theme.
 #'                  Supported values are \code{NULL} (use Pandoc default),
-#'                  \code{"github"} and \code{"vignette"}.
+#'                  \code{"github"}, and \code{"vignette"}.
 #' @param css Additional CSS file to be \strong{merged} in the document. It will
 #'                       \strong{NOT} overwrite the CSS from the themes.
+#' @param math The engine to render math expressions. Possible values are
+#'             \code{"mathjax"} and \code{"katex"}. The \code{katex} engines
+#'             supports offline (no internet connection) rendering of math expressions.
 #' @param fig_retina The same argument in \code{\link[rmarkdown]{html_document}}
 #'                   but with a different default value (\code{NULL} to disable
 #'                   retina scaling)
@@ -26,7 +29,7 @@
 #' @param \dots Additional arguments passed to \code{\link[rmarkdown]{html_document}}.
 #'
 #' @return R Markdown output format to pass to \code{\link[rmarkdown]{render}}.
-#' @author Yixuan Qiu <\url{http://statr.me}>
+#' @author Yixuan Qiu <\url{https://statr.me}>
 #' @examples
 #' \dontrun{
 #' doc = system.file("rmarkdown", "templates", "html_pretty_vignette",
@@ -39,6 +42,7 @@
 html_pretty <- function(theme = "cayman",
                         highlight = NULL,
                         css = NULL,
+                        math = c("mathjax", "katex"),
                         fig_retina = NULL,
                         keep_md = FALSE,
                         readme = FALSE,
@@ -76,6 +80,7 @@ html_pretty <- function(theme = "cayman",
     hl_dir   <- system.file("resources", "css", "highlight", package = "prettydoc")
     font_dir <- system.file("resources", "fonts",            package = "prettydoc")
     img_dir  <- system.file("resources", "images",           package = "prettydoc")
+    js_dir   <- system.file("resources", "js",               package = "prettydoc")
     tmpl_dir <- system.file("resources", "templates",        package = "prettydoc")
 
     ## Obtain theme CSS
@@ -101,6 +106,13 @@ html_pretty <- function(theme = "cayman",
     ## directory in the pre_processor() hook
     final_css <- tempfile(fileext = ".css")
     file.copy(theme_css, final_css)
+
+    ## Merge KaTeX CSS if math == "katex"
+    math <- match.arg(math)
+    if (math == "katex") {
+        katex_css <- file.path(css_dir, "katex", "katex.min.css")
+        file.append(final_css, katex_css)
+    }
 
     ## Merge syntax highlight CSS
     if (!is.null(highlight)) {
@@ -136,13 +148,34 @@ html_pretty <- function(theme = "cayman",
                               files_dir, output_dir) {
         if (!file.exists(files_dir))
             dir.create(files_dir)
+
+        pandoc_flags <- c()
+
         ## Copy CSS and resources to files_dir
-        file.copy(font_dir, files_dir, recursive = TRUE)
         file.copy(img_dir,  files_dir, recursive = TRUE)
+        if (math == "katex") {
+            file.copy(font_dir, files_dir, recursive = TRUE)
+            file.copy(js_dir, files_dir, recursive = TRUE)
+            ## Pass files_dir to pandoc template
+            pandoc_flags <- c(pandoc_flags,
+                              "--variable", sprintf("resource-dir=%s", files_dir),
+                              "--variable", "katex")
+        } else {
+            ## Create fonts folder
+            out_font_dir <- file.path(files_dir, "fonts")
+            if (!file.exists(out_font_dir))
+                dir.create(out_font_dir)
+            ## Exclude KaTeX fonts
+            font_files <- grep("^KaTeX_.*", list.files(font_dir), value = TRUE, invert = TRUE)
+            font_files <- file.path(font_dir, font_files)
+            file.copy(font_files, out_font_dir)
+        }
         doc_css <- file.path(files_dir, "style.css")
         file.copy(final_css, doc_css, overwrite = TRUE)
+
         ## Paremeters passed to Pandoc
-        c("--css", doc_css)
+        pandoc_flags <- c(pandoc_flags, "--css", doc_css)
+        pandoc_flags
     }
 
     ## `self_contained` needs to be explicitly specified, otherwise it will be

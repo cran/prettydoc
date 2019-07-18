@@ -1,8 +1,8 @@
 Package: prettydoc
 Type: Package
 Title: Creating Pretty Documents from R Markdown
-Version: 0.2.1
-Date: 2018-01-15
+Version: 0.3.0
+Date: 2019-07-15
 Authors@R: c(
     person("Yixuan", "Qiu", , "yixuan.qiu@cos.name", c("aut", "cre")),
     person("Jason", "Long", , "jlong@github.com", "ctb",
@@ -18,7 +18,11 @@ Authors@R: c(
     person("Yihui", "Xie", , "xie@yihui.name", "ctb",
            comment = "the html_vignette() function"),
     person("Steve", "Matteson", role = "ctb",
-           comment = "the Open Sans fonts")
+           comment = "the Open Sans fonts"),
+    person("Emily", "Eisenberg", role = "ctb",
+           comment = "the KaTeX library"),
+    person("Sophie", "Alpert", role = "ctb",
+           comment = "the KaTeX library")
     )
 Description: Creating tiny yet beautiful documents and vignettes from R
     Markdown. The package provides the 'html_pretty' output format as an
@@ -34,9 +38,9 @@ BugReports: https://github.com/yixuan/prettydoc/issues
 License: Apache License (>= 2.0)
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 NeedsCompilation: no
-Packaged: 2018-01-16 02:18:54 UTC; qyx
+Packaged: 2019-07-16 17:42:04 UTC; qyx
 Author: Yixuan Qiu [aut, cre],
   Jason Long [ctb] (the Cayman, Tactile and Architect themes),
   Renyuan Zou [ctb] (the Leonids theme),
@@ -44,7 +48,9 @@ Author: Yixuan Qiu [aut, cre],
   JJ Allaire [ctb] (pandoc template for rmarkdown),
   Hadley Wickham [ctb] (the html_vignette() function),
   Yihui Xie [ctb] (the html_vignette() function),
-  Steve Matteson [ctb] (the Open Sans fonts)
+  Steve Matteson [ctb] (the Open Sans fonts),
+  Emily Eisenberg [ctb] (the KaTeX library),
+  Sophie Alpert [ctb] (the KaTeX library)
 Maintainer: Yixuan Qiu <yixuan.qiu@cos.name>
 Repository: CRAN
-Date/Publication: 2018-01-16 08:52:48 UTC
+Date/Publication: 2019-07-18 06:36:17 UTC
