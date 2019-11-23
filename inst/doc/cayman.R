@@ -1,4 +1,4 @@
-## ----fig.width=6, fig.height=6, fig.align='center'-----------------------
+## ----fig.width=6, fig.height=6, fig.align='center'----------------------------
 set.seed(123)
 n <- 1000
 x1  <- matrix(rnorm(n), ncol = 2)
