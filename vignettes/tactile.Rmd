@@ -7,11 +7,17 @@ output:
   prettydoc::html_pretty:
     theme: tactile
     highlight: vignette
+    toc: true
+toc-title: "Table of Contents"
 vignette: >
   %\VignetteIndexEntry{Creating Pretty Documents from R Markdown - The Tactile Theme}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dev.args = list(type = "cairo"))
+```
 
 > Have you ever tried to find a lightweight yet nice theme for the R Markdown
 documents, just like this page?
@@ -80,7 +86,7 @@ be added in the future.
     - `tactile`: Modified from the [Tactile](https://github.com/jasonlong/tactile-theme) theme.
     - `architect`: Modified from the [Architect](https://github.com/jasonlong/architect-theme) theme.
     - `leonids`: Modified from the [Leonids](https://github.com/renyuanz/leonids) theme.
-    - `hpstr`: Modified from the [HPSTR](https://github.com/mmistakes/hpstr-jekyll-theme) theme.
+    - `hpstr`: Modified from the [HPSTR](https://github.com/mmistakes/jekyll-theme-hpstr) theme.
 2. The `highlight` option takes value from `github` and `vignette`.
 3. A new `math` parameter to choose between `mathjax` and `katex` for rendering math expressions.
    The `katex` option supports offline display when there is no internet connection.
@@ -116,8 +122,7 @@ resource files will be included in for offline viewing. The offline document wil
 
 ## Elements
 
-We demonstrate some commonly used HTML elements here to show the apprearance of
-themes.
+We demonstrate some commonly used HTML elements here to show the appearance of themes.
 
 ### Headers
 
