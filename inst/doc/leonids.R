@@ -1,3 +1,7 @@
+## ----setup, include=FALSE-----------------------------------------------------
+if(capabilities("cairo"))
+    knitr::opts_chunk$set(dev.args = list(type = "cairo"))
+
 ## ----fig.width=6, fig.height=6, fig.align='center'----------------------------
 set.seed(123)
 n <- 1000

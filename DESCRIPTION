@@ -1,8 +1,8 @@
 Package: prettydoc
 Type: Package
 Title: Creating Pretty Documents from R Markdown
-Version: 0.4.0
-Date: 2020-08-09
+Version: 0.4.1
+Date: 2021-01-10
 Authors@R: c(
     person("Yixuan", "Qiu", , "yixuan.qiu@cos.name", c("aut", "cre")),
     person("Jason", "Long", , "jlong@github.com", "ctb",
@@ -40,7 +40,7 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
 NeedsCompilation: no
-Packaged: 2020-08-09 08:10:49 UTC; qyx
+Packaged: 2021-01-10 09:47:23 UTC; qyx
 Author: Yixuan Qiu [aut, cre],
   Jason Long [ctb] (the Cayman, Tactile and Architect themes),
   Renyuan Zou [ctb] (the Leonids theme),
@@ -53,4 +53,4 @@ Author: Yixuan Qiu [aut, cre],
   Sophie Alpert [ctb] (the KaTeX library)
 Maintainer: Yixuan Qiu <yixuan.qiu@cos.name>
 Repository: CRAN
-Date/Publication: 2020-08-10 17:20:08 UTC
+Date/Publication: 2021-01-10 11:40:03 UTC
